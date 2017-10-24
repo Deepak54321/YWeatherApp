@@ -56,11 +56,8 @@ def processRequest(req):
     yql_url = baseurl + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
-    
-    return data
-
-
-
+    res = makeWebhookResult(data)
+    return res
 
 def makeWebhookResult(data):
     query = data.get('query')
@@ -87,8 +84,7 @@ def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
 
-    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+    speech = "Demo Tested"
 
     print("Response:")
     print(speech)
